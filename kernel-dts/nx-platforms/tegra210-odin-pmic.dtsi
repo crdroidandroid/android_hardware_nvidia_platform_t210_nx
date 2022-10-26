@@ -378,51 +378,27 @@
 	};
 
 	i2c@7000c000 {
-		bq2419x: battery-charger@6b {
-			compatible = "ti,bq2419x";
+		bq2419x: bq24193@6b {
+			compatible = "ti,bq24193";
 			reg = <0x6b>;
-
 			interrupt-parent = <&gpio>;
 			interrupts = <TEGRA_GPIO(Z, 0) IRQ_TYPE_NONE>;
+			monitored-battery = <&bat>;
 			#extcon-cells = <1>;
 
-			//nvidia,pmc-wakeup = <&tegra_pmc
-			//	PMC_WAKE_TYPE_EVENT 34 PMC_TRIGGER_TYPE_LOW>;
-
-			#thermal-sensor-cells = <0>;
+			omit-battery-class;
 
 			battery_charger: charger {
-				status = "okay";
-				dt-override-status-odm-data = <0x00C00000 0x00400000>;
 				regulator-name = "batt_regulator";
 				regulator-max-microamp = <4500000>;
-				ti,chg-dis-gpio = <&gpio TEGRA_GPIO(S, 6) GPIO_ACTIVE_HIGH>;
-				ti,ir-comp-voltage-millivolt = <1>;
-				ti,ir-comp-resister-ohm = <1>;
-				ti,input-voltage-limit-millivolt = <4360>;
-				ti,sys-input-voltage-limit-millivolt = <3000>;
-				ti,thermal-regulation-threshold-degc = <120>;
-				ti,pre-charge-current-limit-milliamp = <128>;
-				ti,charge-term-current-limit-milliamp = <128>;
-				ti,charge-voltage-limit-millivolt = <4208>;
-				ti,fast-charge-current-limit-milliamp = <2048>;
-				ti,temp-range = <3 16 50 59>;
-				ti,charge-thermal-voltage-limit = <4208 4208 4208 3952>;
-				ti,charge-current-limit = <512 768 2048 2048>;
-				ti,thermal-zone = "battery";
-				ti,temp-polling-time-sec = <20>;
-				ti,pre-to-fast-charge-voltage-millivolt = <3000>;
-				ti,enable-full-plug-detection;
-				ti,watchdog-timeout = <0>; /* Disable OTG/Charging Watchdog */
-				ti,no-otg-watchdog; /* Allow suspend while in OTG */
 			};
 
-			usb0_vbus: vbus {
+			usb0_vbus: usb-otg-vbus {
 				regulator-name = "vbus_regulator";
 			};
 		};
 
-		battery-gauge@36 {
+		bat: battery-gauge@36 {
 			compatible = "maxim,max17050";
 			reg = <0x36>;
 			power-supplies = <&bq2419x>;
@@ -446,6 +422,9 @@
 			maxim,dead-volt = <3000>;
 			maxim,over-volt = <4208>; /* Actual: 4258 mV */
 			maxim,is-battery-present;
+
+			precharge-current-microamp = <128000>; /* 128 mA */
+			charge-term-current-microamp = <128000>; /* 128 mA */
 		};
 
 		bm92t: bm92t@18 {
