@@ -72,6 +72,15 @@
 		};
 	};
 
+	tlk {
+		status = "disabled"; /* Only enable if TOS/NVDECBL/TSEC/EKS are setup */
+	};
+
+	r2p {
+		compatible = "tegra-r2p";
+		status = "okay";
+	};
+
 	rtc {
 		nvidia,pmc-wakeup = <0>; // Disable wakeup alarms
 	};
@@ -1091,6 +1100,12 @@
 
 		cpu@3 {
 			compatible = "arm,cortex-a57", "arm,armv8";
+		};
+
+		idle-states {
+			c7 {
+				status = "disabled";
+			};
 		};
 	};
 
