@@ -602,20 +602,28 @@
 		 */
 
 		profiles {
-			default = "docked";
-			docked {
-				name = "docked";
+			default = "Console";
+			Console {
+				name = "Console";
 				active_trip_temps = <
-					0 36000 43100 47800 55600 63400 71200
-					80000 90000 100000>; /* Unused */
-				active_hysteresis = <0 0 7000 4600 0 0 0 0 0 0>;
+					0 36000 40000 43000 53000 58000
+					70000 80000 90000 100000>; /* Unused */
+				active_hysteresis = <0 0 3900 2900 0 0 0 0 0 0>;
 			};
-			handheld {
-				name = "handheld";
+			Handheld {
+				name = "Handheld";
 				active_trip_temps = <
-					0 36000 40400 45900 55100 64200 73400
-					80000 90000 100000>; /* Unused */
-				active_hysteresis = <0 0 4300 5400 0 0 9100 0 0 0>;
+					0 36000 40000 43000 48000 53000 58000 60000
+					90000 100000>; /* Unused */
+				active_hysteresis = <0 0 3900 2900 0 4900 0 0 0 0>;
+			};
+			/* Uses Handheld tskin coeffs and Console fan duties */
+			Cool {
+				name = "Cool";
+				active_trip_temps = <
+					0 32000 37000 40000 45000 55000
+					70000 80000 90000 100000>; /* Unused */
+				active_hysteresis = <0 0 0 0 0 0 0 0 0 0>;
 			};
 		};
 	};
@@ -649,23 +657,24 @@
 		continuous_gov_boot_on;
 
 		profiles {
-			status = "okay";
-			default = "docked";
-
-			docked {
-				status = "okay";
-				name = "docked";
+			default = "Console";
+			Console {
+				name = "Console";
 				state_cap = <6>;
-				active_pwm = <0 0 51 51 102 153 255 255 255 255>;
+				active_pwm = <0 0 51 51 153 255 255 255 255 255>;
 			};
-			handheld {
-				status = "okay";
-				name = "handheld";
+			Handheld {
+				name = "Handheld";
+				state_cap = <7>;
+				active_pwm = <0 0 51 51 102 153 204 255 255 255>;
+			};
+			Cool {
+				name = "Cool";
 				state_cap = <6>;
-				active_pwm = <0 0 51 51 102 153 204 204 204 204>;
+				active_pwm = <0 0 51 51 153 255 255 255 255 255>;
 			};
 		};
-	};
+    };
 
 	ptm {
 		status = "disabled";
