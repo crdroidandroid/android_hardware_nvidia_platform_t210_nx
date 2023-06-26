@@ -552,20 +552,29 @@
 		dev1 {
 			dev_data = "Tdiode_tegra";
 			group = <0>;
-			/* Based on Console profile SoC: 95% (100% at Handheld) */
-			coeffs = <95 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0>;
+
+			/* Odin SoC Console */
+			coeffs_mode0 = <6182 112480>;
+
+			/* Odin SoC Handheld */
+			coeffs_mode1 = <5464 174190>;
 		};
+
 		dev2 {
 			dev_data = "Tboard_tegra";
 			group = <1>;
-			/* Based on Console profile SoC: 100% (92% at Handheld) */
-			coeffs = <100 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0>;
+
+			/* Odin PCB Console */
+			coeffs_mode0 = <6396 119440>;
+
+			/* Odin PCB Handheld */
+			coeffs_mode1 = <5817 129580>;
 		};
 	};
 
-	thermal_fan_est {
-		compatible = "thermal-fan-est";
-		name = "thermal_fan_est";
+	thermal-fan-est {
+		compatible = "thermal-tskin-fan-est";
+		name = "thermal-fan-est";
 		status = "okay";
 
 		num_resources = <0>;
@@ -581,26 +590,6 @@
 			iir_upper_width = <5000>;
 			iir_lower_width = <15000>;
 		};
-
-		/*
-		 * HOS Thermal Trips
-		 * Estimated shell:
-		 * Tskin        36000 40000 43000 48000 53000 58000
-		 *
-		 * Console profile actual:
-		 * Tdiode       36000 45701 50554 58642 66730 74818
-		 * Tboard       36000 43084 47774 55592 63409 71227
-		 * Ratio b/d:   1.00  0.94  0.95  0.95  0.95  0.95 : 0.95
-		 * Ratio s/d:   1.00  0.88  0.85  0.82  0.79  0.78
-		 * Ratio s/b:   1.00  0.93  0.90  0.86  0.84  0.81
-		 *
-		 * Handheld profile actual:
-		 * Tdiode       36000 40412 45904 55054 64204 73356
-		 * Tboard       36000 45630 50786 59382 67978 76573
-		 * Ratio d/b:   1.00  0.89  0.90  0.93  0.94  0.96 : 0.92
-		 * Ratio s/d:   1.00  0.99  0.94  0.87  0.83  0.79
-		 * Ratio s/b:   1.00  0.88  0.85  0.81  0.78  0.76
-		 */
 
 		profiles {
 			default = "Console";
