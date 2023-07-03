@@ -741,6 +741,7 @@
 			realtek,external-microphone;
 			realtek,sel-jd-source = <4>;
 			realtek,jack-detect-is-jd1;
+            realtek,eq-config-type = <0>;
 
 			#sound-dai-cells = <1>;
 		};
