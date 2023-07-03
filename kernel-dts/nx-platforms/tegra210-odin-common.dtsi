@@ -711,7 +711,7 @@
 			stm,max-real-coords = <1264 704>;
 			stm,edge-offset = <15 15>;
 			stm,delayed-open;
-			stm,delayed-open-time = <10>;
+			stm,delayed-open-time = <0>;
 		};
 	};
 
