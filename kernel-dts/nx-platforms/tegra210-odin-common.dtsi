@@ -765,7 +765,9 @@
 			"x Int Spk", 	"x SPOLP",
 			"x Int Spk", 	"x SPOLN",
 			"x IN1P",		"x Mic Jack",
-			"x IN1P",		"x Mic Jack";
+			"x IN1P",		"x Mic Jack",
+			"y Headphone",	"y OUT",
+			"y IN",			"y Mic";
 
 		nvidia-audio-card,widgets =
 			"Headphone",	"x Headphone Jack",
@@ -1225,4 +1227,8 @@
 &i2s2_to_codec {
 	format = "dsp_a";
 	bitclock-inversion;
+	codec { 
+		sound-dai = <&spdif_dit1 0>;
+		prefix = "y";
+	};
 };
