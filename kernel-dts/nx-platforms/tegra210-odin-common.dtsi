@@ -737,7 +737,7 @@
 	};
 
 	tegra_sound: sound {
-		compatible = "nvidia,tegra210-ape";
+		compatible = "nvidia,tegra210-ape-rt5640";
 		nvidia-audio-card,name = "Nintendo Switch APE";
 
 		clocks = <&tegra_car TEGRA210_CLK_PLL_P_OUT1>,
@@ -1217,7 +1217,7 @@
 };
 
 &i2s1_to_codec {
-	link-name = "rt5640-playback";
+	link-name = "rt565x-playback";
 	codec { 
 		sound-dai = <&rt5639 0>;
 		prefix = "x";
