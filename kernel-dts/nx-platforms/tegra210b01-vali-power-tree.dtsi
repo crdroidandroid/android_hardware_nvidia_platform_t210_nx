@@ -53,16 +53,15 @@
 			rohm,pd-15v-current-limit-ma = <900>;
 		};
 
-        // props not supported in upstream driver as of now, leave for future adjustment
-		// bq2419x: battery-charger@6b {
-		// 	battery_charger: charger {
-		// 		ti,charge-voltage-limit-millivolt = <4320>; /* Adjusted by cell age */
-		// 		ti,fast-charge-current-limit-milliamp = <1664>;
-		// 		ti,temp-range = <0 18 47 58>;
-		// 		ti,charge-thermal-voltage-limit = <4320 4320 4320 4080>; /* Adjusted by cell age */
-		// 		ti,charge-current-limit = <512 640 1664 1664>;
-		// 	};
-		// };
+		bq2419x: battery-charger@6b {
+			battery_charger: charger {
+				ti,charge-voltage-limit-millivolt = <4320>; /* Adjusted by cell age */
+				ti,fast-charge-current-limit-milliamp = <1664>;
+				ti,temp-range = <0 18 47 58>;
+				ti,charge-thermal-voltage-limit = <4320 4320 4320 4080>; /* Adjusted by cell age */
+				ti,charge-current-limit = <512 640 1664 1664>;
+			};
+		};
 
 		battery-gauge@36 {
 			maxim,over-volt = <4320>; /* Actual: 4370 mV */
