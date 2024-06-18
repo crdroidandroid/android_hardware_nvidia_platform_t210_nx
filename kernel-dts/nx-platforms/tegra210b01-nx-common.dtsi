@@ -1332,6 +1332,9 @@
 	};
 
 	reserved-memory {
+		vpr-carveout {
+			status = "disabled";
+		}
 		iram-carveout {
 			status = "disabled";
 		};
