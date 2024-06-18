@@ -85,7 +85,6 @@
 				TEGRA_GPIO(V, 0) 0  /* LCD Backlight PWM */
 				TEGRA_GPIO(V, 1) 0  /* LCD Backlight Enable */
 				TEGRA_GPIO(V, 2) 0  /* LCD Reset */
-				TEGRA_GPIO(H, 1) 0  /* Wi-Fi Reset. Powered off in suspend. */
 				>;
 		};
 	};

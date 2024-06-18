@@ -171,7 +171,6 @@
 		};
 
 		vdd_wlreg_on: regulator@0xd {
-			status = "disabled"; // Controlled by PCIE plat-gpios instead
 			compatible = "regulator-fixed-sync", "regulator-fixed";
 			reg = <13>;
 			regulator-name = "vdd-wlreg_on";

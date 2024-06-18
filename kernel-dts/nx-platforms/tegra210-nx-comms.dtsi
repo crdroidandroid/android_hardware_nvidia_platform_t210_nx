@@ -15,10 +15,12 @@
 #include <dt-bindings/soc/tegra-pmc.h>
 
 / {
-    brcmfmac_pcie_wlan {
-        compatible = "brcm,bcm4356-fmac";
+    brcmfmac: brcmfmac@0 {
+        compatible = "brcm,android-fmac";
+        nvidia,pmc-wakeup = <&tegra_pmc
+            PMC_WAKE_TYPE_EVENT 8 PMC_TRIGGER_TYPE_HIGH>;
+        wlreg_on-supply = <&vdd_wlreg_on>;
         status = "okay";
-        brcm,reset_on_wake;
     };
 
     bluedroid_pm {
