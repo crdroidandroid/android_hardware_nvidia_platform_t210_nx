@@ -1331,12 +1331,12 @@
 	};
 
 	reserved-memory {
-		vpr-carveout {
-			status = "disabled";
-		};
-		iram-carveout {
-			status = "disabled";
-		};
+		/delete-node/ iram-carveout;
+		/delete-node/ vpr-carveout;
+	};
+
+	tegra-carveouts {
+		/delete-property/ memory-region;
 	};
 
 	nvpmodel {
@@ -1391,7 +1391,7 @@
 
 &i2s1_to_codec {
 	link-name = "rt565x-playback";
-	codec { 
+	codec {
 		sound-dai = <&rt5639 0>;
 		prefix = "x";
 	};
