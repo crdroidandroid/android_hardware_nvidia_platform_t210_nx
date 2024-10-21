@@ -91,7 +91,7 @@
 			regulator-min-microvolt = <5000000>;
 			regulator-max-microvolt = <5000000>;
 		};
-        
+
 		/* LCD Power Enable +5V. Rohm BD8316GWL. */
 		v_pavdd_5v0: regulator@7 {
 			compatible = "regulator-fixed-sync", "regulator-fixed";
@@ -147,7 +147,7 @@
 		v_vdd5v3: regulator@0xb {
 			compatible = "regulator-fixed-sync", "regulator-fixed";
 			reg = <11>;
-			status = "okay"; /* Only enabled on Modin/Vali/Frig */
+			status = "okay"; /* Only enabled on Modin/Vali/Fric */
 			regulator-name = "v_vdd5v3";
 			regulator-min-microvolt = <5300000>;
 			regulator-max-microvolt = <5300000>;
